@@ -38,7 +38,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.raywenderlich.android.majesticreader.R
-import com.raywenderlich.android.majesticreader.Document
+import br.com.beneficard.core.domain.Document
 import com.raywenderlich.android.majesticreader.presentation.StringUtil
 import kotlinx.android.synthetic.main.item_document.view.*
 

@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.majesticreader
+package br.com.beneficard.core.domain
 
 import java.io.Serializable
 
