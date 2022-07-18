@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [BookmarkEntity::class, DocumentEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class MajesticReaderDatabase : RoomDatabase() {
@@ -22,7 +22,6 @@ abstract class MajesticReaderDatabase : RoomDatabase() {
         Room.databaseBuilder(context, MajesticReaderDatabase::class.java, DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .build()
-
 
     fun getInstance(context: Context): MajesticReaderDatabase =
         (instance ?: create(context)).also { instance = it }
