@@ -61,7 +61,7 @@ class LibraryViewModel(application: Application, interactors: Interactors)
     loadDocuments()
   }
 
-  fun setOpenDocument(document: Document) {
-   // interactors.setOpenDocument(document)
+  suspend fun setOpenDocument(document: Document) {
+    interactors.setOpenDocument(document)
   }
 }

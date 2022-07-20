@@ -47,6 +47,10 @@ import com.raywenderlich.android.majesticreader.framework.MajesticViewModelFacto
 import com.raywenderlich.android.majesticreader.presentation.IntentUtil
 import com.raywenderlich.android.majesticreader.presentation.library.LibraryFragment
 import kotlinx.android.synthetic.main.fragment_reader.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ReaderFragment : Fragment() {
 
@@ -98,9 +102,11 @@ class ReaderFragment : Fragment() {
     viewModel.currentPage.observe(this, Observer { showPage(it) })
     viewModel.hasNextPage.observe(this, Observer { tabNextPage.isEnabled = it })
     viewModel.hasPreviousPage.observe(this, Observer { tabPreviousPage.isEnabled = it })
-    
+
     if(savedInstanceState == null) {
-      viewModel.loadArguments(arguments)
+      GlobalScope.launch(Dispatchers.Main) {
+        viewModel.loadArguments(arguments)
+      }
     } else {
       // Recreating fragment after configuration change, reopen current page so it can be rendered again.
       viewModel.reopenPage()
