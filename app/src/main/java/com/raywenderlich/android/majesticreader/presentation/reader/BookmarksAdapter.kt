@@ -36,7 +36,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.android.majesticreader.R
-import br.com.beneficard.core.domain.Bookmark
+import com.raywenderlich.android.majesticreader.core.domain.Bookmark
 import kotlinx.android.synthetic.main.item_bookmark.view.*
 
 class BookmarksAdapter(

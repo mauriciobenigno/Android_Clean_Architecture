@@ -1,7 +1,7 @@
 package com.raywenderlich.android.majesticreader.framework
 
-import br.com.beneficard.core.data.OpenDocumentDataSource
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.data.OpenDocumentDataSource
+import com.raywenderlich.android.majesticreader.core.domain.Document
 
 
 class InMemoryOpenDocumentDataSource : OpenDocumentDataSource {

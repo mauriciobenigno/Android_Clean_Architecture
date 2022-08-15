@@ -38,12 +38,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.domain.Document
 import com.raywenderlich.android.majesticreader.R
 import com.raywenderlich.android.majesticreader.presentation.library.LibraryFragment
 import com.raywenderlich.android.majesticreader.presentation.reader.ReaderFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     MainActivityDelegate {
 

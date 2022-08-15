@@ -33,7 +33,7 @@ package com.raywenderlich.android.majesticreader.presentation.library
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.domain.Document
 import com.raywenderlich.android.majesticreader.framework.Interactors
 import com.raywenderlich.android.majesticreader.framework.MajesticViewModel
 import kotlinx.coroutines.Dispatchers

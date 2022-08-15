@@ -31,23 +31,24 @@
 package com.raywenderlich.android.majesticreader.framework
 
 import android.app.Application
-import br.com.beneficard.core.data.BookmarkRepository
-import br.com.beneficard.core.data.DocumentRepository
-import br.com.beneficard.core.interactors.*
+import com.raywenderlich.android.majesticreader.core.data.BookmarkRepository
+import com.raywenderlich.android.majesticreader.core.data.DocumentRepository
+import com.raywenderlich.android.majesticreader.core.interactors.*
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class MajesticReaderApplication : Application() {
 
   override fun onCreate() {
       super.onCreate()
 
-      val bookmarkRepository = BookmarkRepository(RoomBookmarkDataSource(this))
+      /*val bookmarkRepository = BookmarkRepository(RoomBookmarkDataSource(this))
       val documentRepository = DocumentRepository(
           RoomDocumentDataSource(this),
           InMemoryOpenDocumentDataSource()
-      )
+      )*/
 
-
-      MajesticViewModelFactory.inject(
+      /*MajesticViewModelFactory.inject(
           this,
           Interactors(
               AddBookmark(bookmarkRepository),
@@ -59,6 +60,6 @@ class MajesticReaderApplication : Application() {
               GetOpenDocument(documentRepository),
               SetOpenDocument(documentRepository)
           )
-      )
+      )*/
   }
 }

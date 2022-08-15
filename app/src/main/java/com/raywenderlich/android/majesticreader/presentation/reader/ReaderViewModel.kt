@@ -39,8 +39,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import br.com.beneficard.core.domain.Bookmark
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.domain.Bookmark
+import com.raywenderlich.android.majesticreader.core.domain.Document
 import com.raywenderlich.android.majesticreader.framework.Interactors
 import com.raywenderlich.android.majesticreader.framework.MajesticViewModel
 import kotlinx.coroutines.GlobalScope

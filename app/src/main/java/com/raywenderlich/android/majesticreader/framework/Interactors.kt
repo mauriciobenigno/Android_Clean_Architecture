@@ -1,6 +1,6 @@
 package com.raywenderlich.android.majesticreader.framework
 
-import br.com.beneficard.core.interactors.*
+import com.raywenderlich.android.majesticreader.core.interactors.*
 
 data class Interactors(
     val addBookmark: AddBookmark,

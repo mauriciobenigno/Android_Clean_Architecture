@@ -1,7 +1,10 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+  id 'com.android.application'
+  id 'kotlin-android'
+  id 'kotlin-android-extensions'
+  id 'kotlin-kapt'
+  id 'dagger.hilt.android.plugin'
+}
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -30,7 +33,6 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation project(':core')
 
   // Kotlin
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -45,6 +47,11 @@ dependencies {
   implementation "androidx.room:room-ktx:2.4.2"
 
   kapt  "androidx.room:room-compiler:2.4.2"
+
+  // Injeção de dependencias
+  implementation "com.google.dagger:hilt-android:2.34-beta"
+  kapt "com.google.dagger:hilt-android-compiler:2.34-beta"
+  //kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0")
 
   implementation 'com.github.chrisbanes:PhotoView:2.3.0'
   implementation 'com.github.bumptech.glide:glide:4.9.0'

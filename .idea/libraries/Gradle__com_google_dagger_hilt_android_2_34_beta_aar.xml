@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.dagger:hilt-android:2.34-beta@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b336feaf37a8a1823a14fabfbef2051c/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b336feaf37a8a1823a14fabfbef2051c/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b336feaf37a8a1823a14fabfbef2051c/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

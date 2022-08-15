@@ -1,12 +1,17 @@
 package com.raywenderlich.android.majesticreader.framework
 
 import android.content.Context
-import br.com.beneficard.core.data.BookmarkDataSource
-import br.com.beneficard.core.domain.Bookmark
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.data.BookmarkDataSource
+import com.raywenderlich.android.majesticreader.core.domain.Bookmark
+import com.raywenderlich.android.majesticreader.core.domain.Document
 import com.raywenderlich.android.majesticreader.framework.db.BookmarkEntity
 import com.raywenderlich.android.majesticreader.framework.db.MajesticReaderDatabase
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.FragmentComponent
 
+@Module
+@InstallIn(FragmentComponent::class)
 class RoomBookmarkDataSource(context: Context) : BookmarkDataSource {
 
     // 1

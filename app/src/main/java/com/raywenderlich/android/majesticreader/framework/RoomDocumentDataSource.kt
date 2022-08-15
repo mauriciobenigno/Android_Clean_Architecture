@@ -1,11 +1,16 @@
 package com.raywenderlich.android.majesticreader.framework
 
 import android.content.Context
-import br.com.beneficard.core.data.DocumentDataSource
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.data.DocumentDataSource
+import com.raywenderlich.android.majesticreader.core.domain.Document
 import com.raywenderlich.android.majesticreader.framework.db.DocumentEntity
 import com.raywenderlich.android.majesticreader.framework.db.MajesticReaderDatabase
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.FragmentComponent
 
+@Module
+@InstallIn(FragmentComponent::class)
 class RoomDocumentDataSource(val context: Context) : DocumentDataSource {
 
     private val documentDao = MajesticReaderDatabase.getInstance(context).documentDao()

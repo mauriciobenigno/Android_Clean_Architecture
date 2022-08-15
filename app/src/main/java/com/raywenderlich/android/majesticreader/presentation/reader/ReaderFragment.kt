@@ -39,19 +39,23 @@ import android.graphics.pdf.PdfRenderer
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.raywenderlich.android.majesticreader.R
-import br.com.beneficard.core.domain.Document
+import com.raywenderlich.android.majesticreader.core.domain.Document
 import com.raywenderlich.android.majesticreader.framework.MajesticViewModelFactory
 import com.raywenderlich.android.majesticreader.presentation.IntentUtil
 import com.raywenderlich.android.majesticreader.presentation.library.LibraryFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_reader.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ReaderFragment : Fragment() {
 
   companion object {
@@ -62,6 +66,9 @@ class ReaderFragment : Fragment() {
   }
 
   private lateinit var viewModel: ReaderViewModel
+
+  @Inject
+  lateinit var viewModelFactory: MajesticViewModelFactory
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?): View? {
@@ -75,33 +82,32 @@ class ReaderFragment : Fragment() {
     }
     bookmarksRecyclerView.adapter = adapter
 
-    viewModel = ViewModelProviders.of(this, MajesticViewModelFactory)
-        .get(ReaderViewModel::class.java)
+    viewModel = ViewModelProvider(this, viewModelFactory).get(ReaderViewModel::class.java)
 
-    viewModel.document.observe(this, Observer {
+    viewModel.document.observe(this as LifecycleOwner, Observer {
       if (it == Document.EMPTY) {
         // Show file picker action.
         startActivityForResult(IntentUtil.createOpenIntent(), LibraryFragment.READ_REQUEST_CODE)
       }
     })
 
-    viewModel.bookmarks.observe(this, Observer {
+    viewModel.bookmarks.observe(this as LifecycleOwner, Observer {
       adapter.update(it)
     })
 
-    viewModel.isBookmarked.observe(this, Observer {
+    viewModel.isBookmarked.observe(this as LifecycleOwner, Observer {
       val bookmarkDrawable = if (it) R.drawable.ic_bookmark else R.drawable.ic_bookmark_border
       tabBookmark.setCompoundDrawablesWithIntrinsicBounds(0, bookmarkDrawable, 0, 0)
     })
 
-    viewModel.isInLibrary.observe(this, Observer {
+    viewModel.isInLibrary.observe(this as LifecycleOwner, Observer {
       val libraryDrawable = if(it) R.drawable.ic_library else R.drawable.ic_library_border
       tabLibrary.setCompoundDrawablesRelativeWithIntrinsicBounds(0, libraryDrawable, 0, 0)
     })
 
-    viewModel.currentPage.observe(this, Observer { showPage(it) })
-    viewModel.hasNextPage.observe(this, Observer { tabNextPage.isEnabled = it })
-    viewModel.hasPreviousPage.observe(this, Observer { tabPreviousPage.isEnabled = it })
+    viewModel.currentPage.observe(this as LifecycleOwner, Observer { showPage(it) })
+    viewModel.hasNextPage.observe(this as LifecycleOwner, Observer { tabNextPage.isEnabled = it })
+    viewModel.hasPreviousPage.observe(this as LifecycleOwner, Observer { tabPreviousPage.isEnabled = it })
 
     if(savedInstanceState == null) {
       GlobalScope.launch(Dispatchers.Main) {
